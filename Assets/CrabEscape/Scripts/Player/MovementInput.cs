@@ -8,6 +8,8 @@ public class MovementInput : CharacterKeyboardInput
     [Tooltip("Shift button name on unity input system")]
     public string RunButton;
 
+    public string DashButton;
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
@@ -27,5 +29,12 @@ public class MovementInput : CharacterKeyboardInput
         if (string.IsNullOrEmpty(RunButton)) return false;
 
         return Input.GetKey(KeyCode.LeftShift);
+    }
+
+    public virtual bool IsDashButtonPressed()
+    {
+        if (string.IsNullOrEmpty(DashButton)) return false;
+
+        return Input.GetKeyDown(KeyCode.Q) || Input.GetButtonDown(DashButton);
     }
 }

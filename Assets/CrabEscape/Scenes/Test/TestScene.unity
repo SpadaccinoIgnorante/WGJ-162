@@ -269,6 +269,11 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4735090887156404061, guid: 57e92055af4c0da478747f047a21c57d,
+        type: 3}
+      propertyPath: DashButton
+      value: Dash
+      objectReference: {fileID: 0}
     - target: {fileID: 5142159080353186912, guid: 57e92055af4c0da478747f047a21c57d,
         type: 3}
       propertyPath: airControl
@@ -312,6 +317,31 @@ PrefabInstance:
     - target: {fileID: 5142159080353186912, guid: 57e92055af4c0da478747f047a21c57d,
         type: 3}
       propertyPath: _slidingForce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5142159080353186912, guid: 57e92055af4c0da478747f047a21c57d,
+        type: 3}
+      propertyPath: _dashForce
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5142159080353186912, guid: 57e92055af4c0da478747f047a21c57d,
+        type: 3}
+      propertyPath: _movementInput
+      value: 
+      objectReference: {fileID: 1502915299}
+    - target: {fileID: 5142159080353186912, guid: 57e92055af4c0da478747f047a21c57d,
+        type: 3}
+      propertyPath: _dashDuration
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5142159080353186912, guid: 57e92055af4c0da478747f047a21c57d,
+        type: 3}
+      propertyPath: _dashRoutineIsEnd
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5142159080353186912, guid: 57e92055af4c0da478747f047a21c57d,
+        type: 3}
+      propertyPath: _dashCooldown
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

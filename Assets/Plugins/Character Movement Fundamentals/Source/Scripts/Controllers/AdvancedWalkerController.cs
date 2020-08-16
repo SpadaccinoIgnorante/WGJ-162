@@ -214,8 +214,6 @@ namespace CMF
 			//Save movement direction for later;
 			Vector3 _velocityDirection = _velocity;
 
-			Debug.Log($"Velocity Direction {_velocityDirection}");
-
 			//Multiply (normalized) velocity with movement speed;
 			_velocity *= movementSpeed;
 
