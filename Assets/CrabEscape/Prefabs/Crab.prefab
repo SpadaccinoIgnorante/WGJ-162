@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4404779544561742}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 20298731967192810}
   - component: {fileID: 81548007281384750}
   - component: {fileID: 1966881461}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 4491973105662240}
   - component: {fileID: 114075406310325772}
   - component: {fileID: 114697214702710754}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CameraRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 4380173960156682}
   - component: {fileID: 114812654782354504}
   - component: {fileID: 114171209587689312}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CameraControls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +280,7 @@ MonoBehaviour:
   mouseVerticalAxis: Mouse Y
   invertHorizontalInput: 0
   invertVerticalInput: 0
-  mouseSensitivity: 1
+  mouseSensitivity: 5
 --- !u!1 &1965413160415254
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 1502915297}
   - component: {fileID: 1502915298}
   - component: {fileID: 419270046}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Crab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -531,12 +531,14 @@ MonoBehaviour:
   _cameraTr: {fileID: 4380173960156682}
   _seaShell: {fileID: 7055389174087132595, guid: 71cacb6f030d343b0818d20eb0cc4db6,
     type: 3}
-  _throwForceX: 0
-  _throwForceY: 0
-  _throwForceZ: 0
+  _throwForceX: 12
+  _throwForceY: 20
+  _throwForceZ: 2
+  _parabolaXTimer: 0.2
+  _parabolaYTimer: 0.65
+  ThrowXForce: 1
+  ThrowYForce: 1
   _spawnTr: {fileID: 7525991298039891572}
-  firingAngle: 45
-  gravity: 9.8
 --- !u!1 &8628235330823533198
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,7 +548,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7525991298039891572}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SeashellSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -561,7 +563,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8628235330823533198}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3000002, y: 0.65999985, z: 0.5}
+  m_LocalPosition: {x: 0.56, y: -0.36, z: 1.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4723961424010594}
