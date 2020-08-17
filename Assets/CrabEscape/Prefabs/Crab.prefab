@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1107213591856028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.98, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4436832532722518}
@@ -59,7 +59,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 7525991298039891572}
   m_Father: {fileID: 4380173960156682}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -296,6 +297,7 @@ GameObject:
   - component: {fileID: 4735090887156404061}
   - component: {fileID: 1502915297}
   - component: {fileID: 1502915298}
+  - component: {fileID: 419270046}
   m_Layer: 0
   m_Name: Crab
   m_TagString: Untagged
@@ -330,9 +332,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1.5
+  m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 1.25, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &114296478082093108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,11 +347,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d98ace8715c2a184ca85247b18eb0853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stepHeightRatio: 0.25
+  stepHeightRatio: 0
   colliderHeight: 2
   colliderThickness: 1
   colliderOffset: {x: 0, y: 0.5, z: 0}
-  sensorType: 2
+  sensorType: 0
   isInDebugMode: 1
   sensorArrayRows: 1
   sensorArrayRayCount: 7
@@ -363,6 +365,24 @@ MonoBehaviour:
   - {x: -0.90096897, y: 0, z: -0.43388355}
   - {x: -0.222521, y: 0, z: -0.9749279}
   - {x: 0.62349004, y: 0, z: -0.7818313}
+  isGrounded: 0
+  IsUsingExtendedSensorRange: 1
+  baseSensorRange: 1.001
+  currentGroundAdjustmentVelocity: {x: 0, y: 0, z: 0}
+  sensor:
+    castLength: 1
+    sphereCastRadius: 0.4
+    castDirection: 0
+    castType: 0
+    layermask:
+      serializedVersion: 2
+      m_Bits: 4294967291
+    calculateRealSurfaceNormal: 1
+    calculateRealDistance: 1
+    arrayRayCount: 7
+    ArrayRows: 1
+    offsetArrayRows: 0
+    isInDebugMode: 1
 --- !u!54 &54042729638108032
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -392,26 +412,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 12
-  airControl: 0.4
+  airControl: 1
   jumpSpeed: 14
   jumpDuration: 0.2
   airFriction: 0.5
   groundFriction: 100
+  momentum: {x: 0, y: 0, z: 0}
   gravity: 30
   slideGravity: 5
   slopeLimit: 80
-  useLocalMomentum: 1
+  useLocalMomentum: 0
   _currentControllerState: 2
   cameraTransform: {fileID: 4380173960156682}
-  _runSpeed: 18
-  _jumpWindowOnFalling: 0.35
-  _wallRunRotationZ: 11.5
-  _mInput: {fileID: 4735090887156404061}
-  _originalMovementSpeed: 0
-  _canJump: 0
-  _routineFallAlredyRunning: 0
-  _isFallingCausedByJump: 0
-  _isWallRunning: 0
+  _movementInput: {fileID: 4735090887156404061}
+  _dashForce: 30
+  _dashDuration: 0.7
+  _dashCooldown: 1
+  canJump: 0
+  _canDash: 0
+  _isOnWall: 0
+  _dashRoutineIsEnd: 1
 --- !u!114 &4735090887156404061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,40 +449,8 @@ MonoBehaviour:
   jumpKey: 32
   useRawInput: 1
   RunButton: Run
+  DashButton: Dash
 --- !u!114 &1502915297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1965413160415254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9084daaefa000464bb6b91978247cc7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  side: 1
-  raycastLenght: 1
-  rayacastPos: {x: 0, y: 1.15, z: 0}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 256
-  OnRaycastHit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5142159080353186912}
-        m_MethodName: WallHit
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _isOnWall: 0
---- !u!114 &1502915298
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -495,3 +483,87 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _isOnWall: 0
+--- !u!114 &1502915298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965413160415254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9084daaefa000464bb6b91978247cc7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  side: 1
+  raycastLenght: 1
+  rayacastPos: {x: 0, y: 1.15, z: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  OnRaycastHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5142159080353186912}
+        m_MethodName: WallHit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _isOnWall: 0
+--- !u!114 &419270046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965413160415254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 663d485bed46d4a7089b28277093fdec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cameraTr: {fileID: 4380173960156682}
+  _seaShell: {fileID: 7055389174087132595, guid: 71cacb6f030d343b0818d20eb0cc4db6,
+    type: 3}
+  _throwForceX: 0
+  _throwForceY: 0
+  _throwForceZ: 0
+  _spawnTr: {fileID: 7525991298039891572}
+  firingAngle: 45
+  gravity: 9.8
+--- !u!1 &8628235330823533198
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7525991298039891572}
+  m_Layer: 0
+  m_Name: SeashellSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7525991298039891572
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8628235330823533198}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.3000002, y: 0.65999985, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4723961424010594}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

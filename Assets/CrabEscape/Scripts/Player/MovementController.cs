@@ -103,7 +103,6 @@ public class MovementController : AdvancedWalkerController
 	{
 		if(_canDash)
 		{
-			Debug.Log($"Vector dash {GetDirection()  * _dashForce}");
 			return GetDirection()  * _dashForce;
 		}
 
@@ -132,7 +131,7 @@ public class MovementController : AdvancedWalkerController
 		StopCoroutine(DashCooldownRoutine());
 	}
 
-	private Vector3 GetDirection()
+	public Vector3 GetDirection()
 	{
 		return cameraTransform.forward;
 	}
